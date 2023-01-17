@@ -1,59 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 body {
-    background-color: orangered;
+    background: url("./assets/pokefondo.jpg") no-repeat center center fixed;
+    background-size:cover;
     margin: 0;
-    font-family: rubik;
-    color: white;
-  }
-  .container {
-    padding: 40px;
-    margin: 0 auto;
-  }
-  h1 {
-    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif !important;
+    cursor: url("./assets/pokeball.png"), auto;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 30px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+input[type="text"] {
+    border: 3px solid white;
+    padding: 8px 24px;
     text-align: center;
-    font-size: 54px;
-  }
-  .card {
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px 0px #413f3fc2;
+}
+
+.container, header {
+    width:80% ;
+    margin: 0 auto;
+}
+
+#pokedex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+
+/* TARJETAS POKEMONS */
+
+.card {
     list-style: none;
-    padding: 40px;
-    background-color: #f4f4f4;
+    padding: 0px;
+    background-color: white;
     color: #222;
     text-align: center;
+    border-radius: 30px;
+    box-shadow: 0px 0px 15px 0px #413f3fc2;
+    width: 300px;
+    text-align:center;
+    margin-bottom:50px;
+    border: 2px solid white;
+}
+
+.card__img, .card__tittle, .card__div__info  {
+    transform: translateY(-40px);
+}
+
+.card__img {
+    height: 120px;
+    width: auto;
   }
-  .card-title {
-    text-transform: uppercase;
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 0;
-  }
-  .card-subtitle {
-    font-weight: lighter;
-    color: #666;
-    margin-top: 5px;
-  }
-  .card-image {
-    height: 180px;
-  }
-  #pokedex {
-    padding-inline-start: 0;
+
+.card__tittle {
+    color: #333;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+
+.card__div__info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-gap: 20px;
-  }
-  .card:hover {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 20px;
+    gap: 8px; 
+}
+
+.card__div__info > span{
+    border-radius: 5px;
+    color: white;
+    font-weight: lighter;
+    font-size: 13px;
+}
+
+.card__ability {
+    background-color: #8eaeaf;
+}
+
+/* tipos de pokemons */
+
+.type__grass {background-color: #0ead69;}
+.type__fire {background-color: #d62828;}
+.type__water {background-color: #0091ad;}
+.type__bug {background-color: #233d4d;}
+.type__normal {background-color: #c97c5d;}
+.type__poison {background-color: #540d6e;}
+.type__electric {background-color: #ffbc42;}
+.type__ground {background-color: #007f5f;}
+.type__fairy {background-color: #ee4266;}
+.type__fighting {background-color: #8f2d56;}
+.type__psychic {background-color: #3bceac;}
+.type__rock {background-color: #846552;}
+.type__ghost {background-color: #7678ed;}
+.type__ice {background-color: #00a8e8;}
+.type__dragon {background-color: #8d0801;}
+
+
+.card:hover {
     animation: bounce 0.5s linear;
-  }
-  @keyframes bounce {
-    20% {
-      transform: translateY(-6px);
-    }
-    40% {
-      transform: translateY(0px);
-    }
-    60% {
-      transform: translateY(-2px);
-    }
-    80% {
-      transform: translateY(-0px);
-    }
-  }
+    box-shadow: 2px 1px 15px 3px #413f3fc2;
+    border: 2px solid #8eaeaf;
+}
+
+@keyframes bounce {
+    20% {transform: translateY(-6px);}
+    40% {transform: translateY(0px);}
+    60% {transform: translateY(-2px);}
+    80% {transform: translateY(-0px);}
+}
+
+/* SCROLLBAR */
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+      
+body::-webkit-scrollbar-track {
+    background: white;
+}
+      
+body::-webkit-scrollbar-thumb {
+    background-color: #e65362;
+    border-radius: 20px;
+    border: 3px solid white;
+}    

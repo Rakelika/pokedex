@@ -1,7 +1,3 @@
-const pokeContainer$$ = document.querySelector(".container");
-console.log(pokeContainer$$ )
-
-
 // RECOGER DATOS API
 
 const getPokemons = async () => { 
@@ -20,41 +16,72 @@ const getPokemons = async () => {
 const mapPokemons = (pokemons) => {
     return pokemons.map((pokemon) => ({
         name : pokemon.name,
-        image: pokemon.sprites['front_default'],
+        image: pokemon.sprites.other.dream_world.front_default,
         type: pokemon.types[0].type.name,
         ability: pokemon.abilities[0].ability.name,
     }));
   };
 
  // MOSTRAR POKEMONS EN PANTALLA
+
+ const pokeListado$$ = document.querySelector("ol");
  
  const drawPokemons = (pokemons) => {
-    pokeContainer$$.innerHTML = "";
+  pokeListado$$.innerHTML = "";
   
     for (const pokemon of pokemons) {
-      let pokemonFigure = document.createElement("figure");
-      pokemonFigure.className = "figure_pokemon";
+        let pokemonFigure = document.createElement("li");
+        pokemonFigure.className = "card";
 
-      let pokemonImage = document.createElement("img");
-      pokemonImage.setAttribute("src", pokemon.image);
-      pokemonImage.setAttribute("alt", pokemon.name);
-  
-      let pokemonName = document.createElement("h3");
-      pokemonName.textContent = pokemon.name;
-  
-      let pokemonType = document.createElement("h5");
-      pokemonType.textContent = pokemon.type;
+        let pokemonName = document.createElement("h3");
+        pokemonName.textContent = pokemon.name;
+        pokemonName.className = "card__tittle";
 
-      let pokemonAbility = document.createElement("h5");
-      pokemonAbility.textContent = pokemon.ability;
-  
+        // let pokemonImgDiv = document.createElement("div");
+        // pokemonImgDiv.className = "card__div__img";
+
+        let pokemonImage = document.createElement("img");
+        pokemonImage.setAttribute("src", pokemon.image);
+        pokemonImage.setAttribute("alt", pokemon.name);
+        pokemonImage.className = "card__img";
+
+        let pokemonInfoDiv = document.createElement("div");
+        pokemonInfoDiv.className = "card__div__info";
+
+        let pokemonType = document.createElement("span");
+        pokemonType.textContent = pokemon.type;
+
+        pokemon.type === "grass" ? pokemonType.className = "type__grass":
+        pokemon.type === "fire" ? pokemonType.className = "type__fire":
+        pokemon.type === "water" ? pokemonType.className = "type__water":
+        pokemon.type === "bug" ? pokemonType.className = "type__bug":
+        pokemon.type === "normal" ? pokemonType.className = "type__normal":
+        pokemon.type === "poison" ? pokemonType.className = "type__poison":
+        pokemon.type === "electric" ? pokemonType.className = "type__electric":
+        pokemon.type === "ground" ? pokemonType.className = "type__ground":
+        pokemon.type === "fairy" ? pokemonType.className = "type__fairy":
+        pokemon.type === "fighting" ? pokemonType.className = "type__fighting":
+        pokemon.type === "psychic" ? pokemonType.className = "type__psychic":
+        pokemon.type === "rock" ? pokemonType.className = "type__rock":
+        pokemon.type === "ghost" ? pokemonType.className = "type__ghost":
+        pokemon.type === "ice" ? pokemonType.className = "type__ice":
+        pokemon.type === "dragon" ? pokemonType.className = "type__dragon":
+        pokemonType.className = "type__none";
+
+        let pokemonAbility = document.createElement("span");
+        pokemonAbility.textContent = pokemon.ability;
+        pokemonAbility.className = "card__ability";  
+      
       pokemonFigure.appendChild(pokemonImage);
       pokemonFigure.appendChild(pokemonName);
-      pokemonFigure.appendChild(pokemonType);
-      pokemonFigure.appendChild(pokemonAbility);
-  
-      pokeContainer$$.appendChild(pokemonFigure);
+      pokemonFigure.appendChild(pokemonInfoDiv);
+      pokemonInfoDiv.appendChild(pokemonType);
+      pokemonInfoDiv.appendChild(pokemonAbility);
+
+      pokeListado$$.appendChild(pokemonFigure)
+
     }
+
   }
   
   // BUSCADOR POKEMONS
